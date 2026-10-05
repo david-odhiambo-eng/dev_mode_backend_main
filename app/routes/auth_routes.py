@@ -7,7 +7,7 @@ from app.schemas.users import (
 )
 from app.db.db_connections import get_db
 from sqlalchemy.orm import Session
-from app.db.tables import User
+from app.db.users_table import User
 from app.encryption.encryption import hash_password, check_hash
 from app.encryption.jwt import create_access_token, verify_token, restrict_routes
 

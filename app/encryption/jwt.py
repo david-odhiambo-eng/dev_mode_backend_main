@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 from fastapi import HTTPException, status, Request, Depends
 from app.db.db_connections import get_db
 from sqlalchemy.orm import Session
-from app.db.tables import User
+from app.db.users_table import User
 
 
 # creating access token
