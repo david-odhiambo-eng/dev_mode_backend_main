@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, Depends
+from fastapi import APIRouter, status, Depends, HTTPException
 from app.schemas.topic_quiz import CreateTopic, CreateQuestion, QuestionResponse
 from sqlalchemy.orm import Session
 from app.db.db_connections import get_db
@@ -23,7 +23,9 @@ def create_topic_and_quiz(
             db.add(topic)
             db.flush()
 
-        question = Question(quiz=quiz_data.quiz)
+        question = Question(
+            quiz=quiz_data.quiz, answer=quiz_data.answer, key_word=quiz_data.key_word
+        )
         db.add(question)
         db.flush()
 
@@ -36,4 +38,6 @@ def create_topic_and_quiz(
 
     except Exception:
         db.rollback()
-        raise
+        raise HTTPException(
+            detail="TOPIC ALREADY EXISTS", status_code=status.HTTP_409_CONFLICT
+        )

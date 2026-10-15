@@ -1,12 +1,15 @@
 from pydantic import BaseModel, ConfigDict
+from sqlalchemy import null
 
 
 class CreateTopic(BaseModel):
-    topic_name = str
+    topic_name: str
 
 
 class CreateQuestion(BaseModel):
-    quiz = str
+    quiz: str
+    answer: str | None = None
+    key_word: str | None = None
 
 
 class QuestionResponse(BaseModel):

@@ -3,6 +3,7 @@ from app.routes.auth_routes import auth_router
 from app.db.db_connections import Base
 from app.db.db_connections import engine
 from fastapi.middleware.cors import CORSMiddleware
+from app.routes.topics_quiz_route import topic_quiz_router
 
 dev_mode = FastAPI()
 
@@ -23,4 +24,5 @@ def root():
     return {'message': 'Test successful'}
 
 dev_mode.include_router(auth_router)
+dev_mode.include_router(topic_quiz_router)
 Base.metadata.create_all(bind=engine)
