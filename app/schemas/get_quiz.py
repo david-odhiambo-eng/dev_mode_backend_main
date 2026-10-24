@@ -1,4 +1,4 @@
 from pydantic import BaseModel
 
 class GetQuestions(BaseModel):
-    topic_id: list[int]
+    topic_names: list[str]

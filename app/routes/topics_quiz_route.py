@@ -29,7 +29,7 @@ def create_topic_and_quiz(
         db.add(question)
         db.flush()
 
-        topic_quiz = TopicsQuestions(topic_id=topic.id, quiz_id=question.id)
+        topic_quiz = TopicsQuestions(topic_name=topic.topic_name, quiz_id=question.id)
         db.add(topic_quiz)
 
         db.commit()

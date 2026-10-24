@@ -13,16 +13,16 @@ class Topic(Base):
 class Question(Base):
     __tablename__ = "questions"
     id = Column(Integer, primary_key=True, index=True)
-    quiz = Column(String, nullable=False, unique=True)
+    quiz = Column(String, nullable=False, unique=False)
     answer = Column(String, nullable=True, unique=False)
     key_word = Column(String, nullable=True, unique=False)
 
 
 class TopicsQuestions(Base):
     __tablename__ = "topics_questions"
-    topic_id = Column(
-        Integer,
-        ForeignKey("topics.id"),
+    topic_name = Column(
+        String,
+        ForeignKey("topics.topic_name"),
         primary_key=True,
         index=True,
     )
